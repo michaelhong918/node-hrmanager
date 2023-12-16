@@ -1,5 +1,9 @@
 <div class="container">
-  <form class="row justify-content-center">
+  <form
+    class="row justify-content-center needs-validation"
+    id="{{manager.id}}"
+    novalidate
+  >
     <div class="col-lg-6">
       {{#if manager}}
         <h2>Edit manager detail</h2>
@@ -15,7 +19,11 @@
             id="firstname"
             value="{{manager.firstname}}"
             placeholder="John"
+            required
           />
+          <div class="invalid-feedback">
+            Please provide valid firstname.
+          </div>
         </div>
         <div class="col-md-12">
           <label for="inputLastName" class="form-label">Lastname</label>
@@ -25,7 +33,11 @@
             id="lastname"
             value="{{manager.lastname}}"
             placeholder="Doe"
+            required
           />
+          <div class="invalid-feedback">
+            Please provide valid lastname.
+          </div>
         </div>
         <div class="col-md-12">
           <label for="inputDepartment" class="form-label">Department</label>
@@ -35,7 +47,11 @@
             id="department"
             value="{{manager.department}}"
             placeholder="e.g Human Resource"
+            required
           />
+          <div class="invalid-feedback">
+            Please provide valid department.
+          </div>
         </div>
         <div class="col-md-8"></div>
         <div class="col-md-4">
