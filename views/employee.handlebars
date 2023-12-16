@@ -1,7 +1,12 @@
 <div class="container">
   <form class="row justify-content-center">
     <div class="col-md-8">
-      <div class="row g-3">
+      {{#if employee}}
+        <h2>Edit employee detail</h2>
+      {{else}}
+        <h2>Creat a new employee</h2>
+      {{/if}}
+      <div class="row g-3 mt-2">
         <div class="col-md-6">
           <label for="inputEmail" class="form-label">Email</label>
           <input
