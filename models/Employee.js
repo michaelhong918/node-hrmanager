@@ -59,7 +59,7 @@ module.exports = function (sequelize, DataTypes) {
     // We're saying that a Employee should belong to an Author
     // A Employee can't be created without an Author due to the foreign key constraint
     Employee.belongsTo(models.Manager, {
-      foreignKey: 'id',
+      foreignKey: 'managerId',
     });
   };
 

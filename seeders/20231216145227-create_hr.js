@@ -15,7 +15,7 @@ module.exports = {
       id: 2,
       isAdmin: false,
       username: "HrAssistance",
-      email: "hrasstance@gmail.com",
+      email: "hrassistance@gmail.com",
       password: "password1",
       createdAt: new Date(),
       updatedAt: new Date()

@@ -49,7 +49,11 @@
             {{#if user.isAdmin}}
               required
             {{else}}
-              disabled
+              {{#if employee}}
+                disabled
+              {{else}}
+                required
+              {{/if}}
             {{/if}}
           />
           <div class="invalid-feedback">
@@ -126,7 +130,11 @@
             {{#if user.isAdmin}}
               required
             {{else}}
-              disabled
+              {{#if employee}}
+                disabled
+              {{else}}
+                required
+              {{/if}}
             {{/if}}
           />
           <div class="invalid-feedback">

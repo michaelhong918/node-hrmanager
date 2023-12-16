@@ -18,7 +18,6 @@ module.exports = function (sequelize, DataTypes) {
   Manager.associate = function (models) {
     // Associating Manager with Posts
     // When an Manager is deleted, also delete any associated Posts
-    Manager.hasMany(models.Employee, { foreignKey: 'managerId' });
   };
 
   return Manager;
