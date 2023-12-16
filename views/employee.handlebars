@@ -1,5 +1,8 @@
 <div class="container">
-  <form class="row justify-content-center">
+  <form
+    class="row justify-content-center needs-validation"
+    id="{{employee.id}}" novalidate
+  >
     <div class="col-md-8">
       {{#if employee}}
         <h2>Edit employee detail</h2>
@@ -15,7 +18,11 @@
             id="email"
             value="{{employee.email}}"
             placeholder="johndoe@gmail.com"
+            required
           />
+          <div class="invalid-feedback">
+            Please provide valid email.
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputAddress" class="form-label">Address</label>
@@ -25,7 +32,11 @@
             id="address"
             value="{{employee.address}}"
             placeholder="1234 Main St"
+            required
           />
+          <div class="invalid-feedback">
+            Please provide valid address.
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputSalary" class="form-label">Salary</label>
@@ -35,7 +46,11 @@
             id="salary"
             value="{{employee.salary}}"
             placeholder="e.g 50000"
+            required
           />
+          <div class="invalid-feedback">
+            Please provide valid salary.
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputPosition" class="form-label">Title/Position</label>
@@ -45,24 +60,44 @@
             id="position"
             value="{{employee.position}}"
             placeholder="e.g Software Engineer"
+            required
           />
+          <div class="invalid-feedback">
+            Please provide valid title position.
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputStatus" class="form-label">Employment Status</label>
-          <select class="form-select" aria-label="status" id="status">
-            <option>Select employment status</option>
+          <select
+            class="form-select"
+            aria-label="status"
+            id="status"
+            required
+          >
+            <option selected disabled value="">Select employment status</option>
             <option value="1" {{#if (eq employee.status 1)}}selected{{/if}}>Regular</option>
             <option value="0" {{#if (eq employee.status 0)}}selected{{/if}}>Otherwise</option>
           </select>
+          <div class="invalid-feedback">
+            Please select employment status.
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputManager" class="form-label">Manager</label>
-          <select class="form-select" aria-label="manager" id="manager">
-            <option selected>Select a manager</option>
+          <select
+            class="form-select"
+            aria-label="manager"
+            id="manager"
+            required
+          >
+            <option selected disabled value="">Select a manager</option>
             {{#each managers}}
               <option value="{{id}}" {{#if (eq ../employee.managerId id)}}selected{{/if}}>{{firstname}} {{lastname}}</option>
             {{/each}}
           </select>
+          <div class="invalid-feedback">
+            Please select manager.
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputHireDate" class="form-label">Hired Date</label>
@@ -71,7 +106,11 @@
             class="form-control"
             id="hireDate"
             value="{{employee.hireDate}}"
+            required
           />
+          <div class="invalid-feedback">
+            Please select valid hired date.
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputTerminateDate" class="form-label">Terminate Date</label>
@@ -80,7 +119,11 @@
             class="form-control"
             id="terminateDate"
             value="{{employee.terminateDate}}"
+            required
           />
+          <div class="invalid-feedback">
+            Please select terminate date.
+          </div>
         </div>
         <div class="col-md-8"></div>
         <div class="col-md-4">
