@@ -60,7 +60,7 @@ router.delete("/api/managers/:id", function (req, res, next) {
             id: req.params.id
         }
     }).then((dbManager) => {
-        res.json(dbManager);
+        res.json({ success: true });
     }).catch((err) => {
         return next(err)
     });

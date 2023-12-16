@@ -61,8 +61,8 @@ router.delete("/api/employees/:id", function (req, res, next) {
     where: {
       id: req.params.id
     }
-  }).then((dbEmployee) => {
-    res.json(dbEmployee);
+  }).then(() => {
+    res.json({ success: true });
   }).catch((err) => {
     return next(err)
   });

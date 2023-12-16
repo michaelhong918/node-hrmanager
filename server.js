@@ -7,6 +7,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const session = require('express-session');
 
 // Sets up the Express App
 // =============================================================
@@ -29,6 +30,15 @@ app.use(express.static("public"));
 // Cors
 app.use(cors());
 
+// Session
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: 'your-secret-key', // Replace with a real secret key
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true if using https
+}));
+
 // Set Handlebars.
 const Handlebars = require('handlebars')
 const { engine } = require("express-handlebars");
@@ -48,10 +58,12 @@ app.set('views', './views');
 
 // Routes
 // =============================================================
+const authController = require("./controllers/auth.js");
 const employeeController = require("./controllers/employee.js");
 const managerController = require("./controllers/manager.js");
 const viewController = require("./controllers/view.js");
 
+app.use(authController);
 app.use(employeeController);
 app.use(managerController);
 app.use(viewController);

@@ -7,30 +7,36 @@
 const router = require('express').Router();
 const moment = require("moment");
 const db = require("../models");
+const { auth } = require("./middleware/auth")
 
 // Routes
 // =============================================================
 
 // Each of the below routes just handles the HTML page that the user gets sent to.
-router.get('/login', renderLogin);
+router.route('/login').get(renderLogin);
 
-router.get('/', renderEmployees);
+router.route('/').get(auth, renderEmployees);
 
-router.get('/employee', renderEmployees);
-router.get('/employee/create', renderEmployeeCreate);
-router.get('/employee/:id', renderEmployeeEdit);
+router.route('/employee').get(auth, renderEmployees);
+router.route('/employee/create').get(auth, renderEmployeeCreate);
+router.route('/employee/:id').get(auth, renderEmployeeEdit);
 
-router.get('/manager', renderManagers);
-router.get('/manager/create', renderManagerCreate);
-router.get('/manager/:id', renderManagerEdit);
+router.route('/manager').get(auth, renderManagers);
+router.route('/manager/create').get(auth, renderManagerCreate);
+router.route('/manager/:id').get(auth, renderManagerEdit);
 
 // Display login
-function renderLogin(_, res) {
-  res.render('login')
+function renderLogin(req, res) {
+  if (req.session.user) {
+    res.redirect('/employee')
+  }
+  else {
+    res.render('login')
+  }
 }
 
 // Display all employees table
-function renderEmployees(_, res) {
+function renderEmployees(req, res) {
   db.Employee.findAll({
     where: {},
     include: [db.Manager],
@@ -43,14 +49,14 @@ function renderEmployees(_, res) {
       hireDate: moment(employee.hireDate).format("MMM Do YYYY"),
       terminateDate: moment(employee.terminateDate).format("MMM Do YYYY")
     }))
-    res.render('employees', { employees: data })
+    res.render('employees', { employees: data, user: req.session.user })
   });
 }
 
 // Display employee craete form
-function renderEmployeeCreate(_, res) {
+function renderEmployeeCreate(req, res) {
   db.Manager.findAll().then((managers) => {
-    res.render('employee', { managers });
+    res.render('employee', { managers, user: req.session.user });
   });
 }
 
@@ -69,26 +75,26 @@ function renderEmployeeEdit(req, res) {
         hireDate: moment(employee.hireDate).format("YYYY-MM-DD"),
         terminateDate: moment(employee.terminateDate).format("YYYY-MM-DD")
       }
-      res.render('employee', { employee: data, managers });
+      res.render('employee', { employee: data, managers, user: req.session.user });
     })
   });
 }
 
 // Display all managers table
-function renderManagers(_, res) {
+function renderManagers(req, res) {
   db.Manager.findAll({ raw: true }).then((managers) => {
     const data = managers.map((manager, index) => ({
       ...manager,
       no: index + 1,
       createdAt: moment(manager.createdAt).format('MMM Do YYYY')
     }))
-    res.render('managers', { managers: data })
+    res.render('managers', { managers: data, user: req.session.user })
   });
 }
 
 // Display manager create form
-function renderManagerCreate(_, res) {
-  res.render('manager');
+function renderManagerCreate(req, res) {
+  res.render('manager', { user: req.session.user });
 }
 
 // Display manager edit form
@@ -98,7 +104,7 @@ function renderManagerEdit(req, res) {
       id: req.params.id,
     },
   }).then((manager) => {
-    res.render('manager', { manager });
+    res.render('manager', { manager, user: req.session.user });
   });
 }
 
