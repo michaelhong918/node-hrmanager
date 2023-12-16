@@ -12,6 +12,8 @@ const db = require("../models");
 // =============================================================
 
 // Each of the below routes just handles the HTML page that the user gets sent to.
+router.get('/login', renderLogin);
+
 router.get('/', renderEmployees);
 
 router.get('/employee', renderEmployees);
@@ -22,14 +24,21 @@ router.get('/manager', renderManagers);
 router.get('/manager/create', renderManagerCreate);
 router.get('/manager/:id', renderManagerEdit);
 
+// Display login
+function renderLogin(_, res) {
+  res.render('login')
+}
+
 // Display all employees table
 function renderEmployees(_, res) {
   db.Employee.findAll({
+    where: {},
     include: [db.Manager],
     raw: true
   }).then((employees) => {
-    const data = employees.map(employee => ({
+    const data = employees.map((employee, index) => ({
       ...employee,
+      no: index + 1,
       status: employee.status ? "Regular" : "Otherwise",
       hireDate: moment(employee.hireDate).format("MMM Do YYYY"),
       terminateDate: moment(employee.terminateDate).format("MMM Do YYYY")
@@ -68,8 +77,9 @@ function renderEmployeeEdit(req, res) {
 // Display all managers table
 function renderManagers(_, res) {
   db.Manager.findAll({ raw: true }).then((managers) => {
-    const data = managers.map(manager => ({
+    const data = managers.map((manager, index) => ({
       ...manager,
+      no: index + 1,
       createdAt: moment(manager.createdAt).format('MMM Do YYYY')
     }))
     res.render('managers', { managers: data })
