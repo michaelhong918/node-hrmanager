@@ -1,0 +1,64 @@
+<div class="container">
+  <form class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <label for="inputFirstName" class="form-label">Firstname</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstname"
+            value="{{manager.firstname}}"
+            placeholder="John"
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="inputLastName" class="form-label">Lastname</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastname"
+            value="{{manager.lastname}}"
+            placeholder="Doe"
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="inputDepartment" class="form-label">Department</label>
+          <input
+            type="text"
+            class="form-control"
+            id="department"
+            value="{{manager.department}}"
+            placeholder="e.g Human Resource"
+          />
+        </div>
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <div class="row g-2 justify-content-right">
+            <div class="col-md-6">
+              <button
+                type="button"
+                class="cancel btn btn-secondary w-100"
+              >Cancel</button>
+            </div>
+            <div class="col-md-6">
+              {{#if manager}}
+                <button
+                  type="submit"
+                  class="btn btn-primary w-100"
+                >Edit</button>
+              {{else}}
+                <button
+                  type="submit"
+                  class="btn btn-primary w-100"
+                >Create</button>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Custom Script -->
+<script src="/js/manager.js" type="text/javascript"></script>

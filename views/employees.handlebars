@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+      <button type="button" class="create btn btn-outline-primary w-100">
+        Add a new employee
+      </button>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Title/Position</th>
+        <th scope="col">Employment Status</th>
+        <th scope="col">Manager</th>
+        <th scope="col">Hired Date</th>
+        <th scope="col">Terminate Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each employees}}
+        <tr data-employee="{{id}}">
+          <th scope="col">{{id}}</th>
+          <td>{{email}}</td>
+          <td>{{address}}</td>
+          <td>{{salary}}$</td>
+          <td>{{position}}</td>
+          <td>{{status}}</td>
+          <td>{{"Manager.firstname"}} {{"Manager.lastname"}}</td>
+          <td>{{hireDate}}</td>
+          <td>{{terminateDate}}</td>
+          <td>
+            <button class="edit btn btn-primary">Edit</button>
+            <button class="delete btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<!-- Custom Script -->
+<script src="/js/employees.js" type="text/javascript"></script>

@@ -1,0 +1,109 @@
+<div class="container">
+  <form class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            value="{{employee.email}}"
+            placeholder="johndoe@gmail.com"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            value="{{employee.address}}"
+            placeholder="1234 Main St"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputSalary" class="form-label">Salary</label>
+          <input
+            type="number"
+            class="form-control"
+            id="salary"
+            value="{{employee.salary}}"
+            placeholder="e.g 50000"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputPosition" class="form-label">Title/Position</label>
+          <input
+            type="text"
+            class="form-control"
+            id="position"
+            value="{{employee.position}}"
+            placeholder="e.g Software Engineer"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputStatus" class="form-label">Employment Status</label>
+          <select class="form-select" aria-label="status" id="status">
+            <option>Select employment status</option>
+            <option value="1" {{#if (eq employee.status 1)}}selected{{/if}}>Regular</option>
+            <option value="0" {{#if (eq employee.status 0)}}selected{{/if}}>Otherwise</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputManager" class="form-label">Manager</label>
+          <select class="form-select" aria-label="manager" id="manager">
+            <option selected>Select a manager</option>
+            {{#each managers}}
+              <option value="{{id}}" {{#if (eq ../employee.managerId id)}}selected{{/if}}>{{firstname}} {{lastname}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputHireDate" class="form-label">Hired Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="hireDate"
+            value="{{employee.hireDate}}"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputTerminateDate" class="form-label">Terminate Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="terminateDate"
+            value="{{employee.terminateDate}}"
+          />
+        </div>
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <div class="row g-2 justify-content-right">
+            <div class="col-md-6">
+              <button
+                type="button"
+                class="cancel btn btn-secondary w-100"
+              >Cancel</button>
+            </div>
+            <div class="col-md-6">
+              {{#if employee}}
+                <button
+                  type="submit"
+                  class="btn btn-primary w-100"
+                >Edit</button>
+              {{else}}
+                <button
+                  type="submit"
+                  class="btn btn-primary w-100"
+                >Create</button>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Custom Script -->
+<script src="/js/employee.js" type="text/javascript"></script>
