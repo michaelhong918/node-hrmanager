@@ -46,7 +46,11 @@
             id="salary"
             value="{{employee.salary}}"
             placeholder="e.g 50000"
-            required
+            {{#if user.isAdmin}}
+              required
+            {{else}}
+              disabled
+            {{/if}}
           />
           <div class="invalid-feedback">
             Please provide valid salary.
@@ -119,7 +123,11 @@
             class="form-control"
             id="terminateDate"
             value="{{employee.terminateDate}}"
-            required
+            {{#if user.isAdmin}}
+              required
+            {{else}}
+              disabled
+            {{/if}}
           />
           <div class="invalid-feedback">
             Please select terminate date.
