@@ -31,6 +31,9 @@ $(document).ready(function () {
                 success: () => {
                     window.location.href = "/employee"
                 },
+                error: (msg) => {
+                    showAlert(msg.statusText)
+                }
             })
         }
     }, false)

@@ -19,7 +19,7 @@ $(document).ready(function () {
                     window.location.href = "/employee"
                 },
                 error: () => {
-
+                    showAlert("Looks like the credentials you entered don't match!")
                 }
             })
         }

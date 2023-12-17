@@ -24,6 +24,9 @@ $(document).ready(function () {
                 success: () => {
                     window.location.href = "/manager"
                 },
+                error: (msg) => {
+                    showAlert(msg.statusText)
+                }
             })
         }
     }, false)
