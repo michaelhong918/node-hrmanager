@@ -111,8 +111,8 @@
             required
           >
             <option selected disabled value="">Select employment status</option>
-            <option value="1" {{#if (eq employee.status 1)}}selected{{/if}}>Regular</option>
-            <option value="0" {{#if (eq employee.status 0)}}selected{{/if}}>Otherwise</option>
+            <option value="1" {{#if (eq employee.status true)}}selected{{/if}}>Regular</option>
+            <option value="0" {{#if (eq employee.status false)}}selected{{/if}}>Otherwise</option>
           </select>
           <div class="invalid-feedback">
             Please select employment status.
@@ -155,7 +155,7 @@
             class="form-control"
             id="terminateDate"
             value="{{employee.terminateDate}}"
-            {{#if (eq user.isAdmin 0)}}
+            {{#if (eq user.isAdmin false)}}
               {{#if employee}}
                 disabled
               {{/if}}

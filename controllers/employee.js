@@ -34,6 +34,7 @@ router.get("/api/employees/:id", (req, res, next) => {
 
 // POST route for saving a new employee
 router.post("/api/employees", (req, res, next) => {
+  console.log(req.body);
   db.Employee.create(req.body).then((dbEmployee) => {
     res.json(dbEmployee);
   }).catch((err) => {

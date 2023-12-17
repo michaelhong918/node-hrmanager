@@ -40,7 +40,8 @@ function renderEmployees(req, res) {
   db.Employee.findAll({
     where: {},
     include: [db.Manager],
-    raw: true
+    raw: true,
+    order: [['id', 'ASC']]
   }).then((employees) => {
     const data = employees.map((employee, index) => ({
       ...employee,
@@ -82,7 +83,10 @@ function renderEmployeeEdit(req, res) {
 
 // Display all managers table
 function renderManagers(req, res) {
-  db.Manager.findAll({ raw: true }).then((managers) => {
+  db.Manager.findAll({
+    raw: true,
+    order: [['id', 'ASC']]
+  }).then((managers) => {
     const data = managers.map((manager, index) => ({
       ...manager,
       no: index + 1,

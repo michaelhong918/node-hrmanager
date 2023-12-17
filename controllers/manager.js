@@ -32,6 +32,7 @@ router.get("/api/managers/:id", (req, res, next) => {
 
 // POST route for saving a new manager
 router.post("/api/managers", (req, res, next) => {
+    console.log(req.body);
     db.Manager.create(req.body).then((dbManager) => {
         res.json(dbManager);
     }).catch((err) => {
