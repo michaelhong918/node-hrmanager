@@ -42,10 +42,6 @@ module.exports = function (sequelize, DataTypes) {
     managerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // references: {
-      //   model: 'Manager',
-      //   key: 'id'
-      // }
     },
     hireDate: {
       type: DataTypes.DATE,
@@ -53,7 +49,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     terminateDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,

@@ -14,7 +14,7 @@ module.exports = {
       status: true,
       managerId: 1,
       hireDate: "2022-1-1",
-      terminateDate: "2025-1-1",
+      terminateDate: null,
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
@@ -28,7 +28,7 @@ module.exports = {
       status: false,
       managerId: 3,
       hireDate: "2021-6-6",
-      terminateDate: "2031-6-5",
+      terminateDate: null,
       createdAt: new Date(),
       updatedAt: new Date()
     }])

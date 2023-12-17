@@ -155,13 +155,9 @@
             class="form-control"
             id="terminateDate"
             value="{{employee.terminateDate}}"
-            {{#if user.isAdmin}}
-              required
-            {{else}}
+            {{#if (eq user.isAdmin 0)}}
               {{#if employee}}
                 disabled
-              {{else}}
-                required
               {{/if}}
             {{/if}}
           />

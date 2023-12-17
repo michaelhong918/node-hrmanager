@@ -47,7 +47,7 @@ function renderEmployees(req, res) {
       no: index + 1,
       status: employee.status ? "Regular" : "Otherwise",
       hireDate: moment(employee.hireDate).format("MMM Do YYYY"),
-      terminateDate: moment(employee.terminateDate).format("MMM Do YYYY")
+      terminateDate: employee.terminateDate ? moment(employee.terminateDate).format("MMM Do YYYY") : 'N/A'
     }))
     res.render('employees', { employees: data, user: req.session.user })
   });
@@ -73,7 +73,7 @@ function renderEmployeeEdit(req, res) {
       const data = {
         ...employee,
         hireDate: moment(employee.hireDate).format("YYYY-MM-DD"),
-        terminateDate: moment(employee.terminateDate).format("YYYY-MM-DD")
+        terminateDate: employee.terminateDate ? moment(employee.terminateDate).format("YYYY-MM-DD") : null
       }
       res.render('employee', { employee: data, managers, user: req.session.user });
     })
