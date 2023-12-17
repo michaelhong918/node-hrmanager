@@ -18,6 +18,9 @@ $(document).ready(function () {
                 success: () => {
                     window.location.href = "/employee"
                 },
+                error: () => {
+
+                }
             })
         }
     }, false)

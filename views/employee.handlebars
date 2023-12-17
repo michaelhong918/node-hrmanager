@@ -11,6 +11,34 @@
       {{/if}}
       <div class="row g-3 mt-2">
         <div class="col-md-6">
+          <label for="inputFirstname" class="form-label">Firstname</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstname"
+            value="{{employee.firstname}}"
+            placeholder="John"
+            required
+          />
+          <div class="invalid-feedback">
+            Please provide valid firstname.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail" class="form-label">Lastname</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastname"
+            value="{{employee.lastname}}"
+            placeholder="Doe"
+            required
+          />
+          <div class="invalid-feedback">
+            Please provide valid lastname.
+          </div>
+        </div>
+        <div class="col-md-6">
           <label for="inputEmail" class="form-label">Email</label>
           <input
             type="email"

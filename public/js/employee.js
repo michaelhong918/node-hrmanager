@@ -17,6 +17,8 @@ $(document).ready(function () {
                 type: form.id ? "PUT" : "POST",
                 url: `/api/employees${form.id && "/" + form.id}`,
                 data: {
+                    firstname: $('#firstname').val(),
+                    lastname: $('#lastname').val(),
                     email: $('#email').val(),
                     address: $('#address').val(),
                     salary: $('#salary').val(),
